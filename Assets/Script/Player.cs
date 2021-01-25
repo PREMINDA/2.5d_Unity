@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     private CharacterController _controller;
     private Vector3 playerVelocity;
-    private float playerSpeed = 5.0f;
+    private float playerSpeed = 8.0f;
     [SerializeField]
     private float gravityValue = 1f;
     private bool _isground;
-    private float _jumpHeight = 40f;
+    private float _jumpHeight = 50f;
     private float _yVelocity;
     private bool isjump=false;
+    private UIManager _uimanager;
+    private int score=0;
+
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
-        
+        _uimanager = GameObject.Find("Canvas").GetComponent<UIManager>();
+    
+
+
     }
 
     // Update is called once per frame
@@ -58,4 +65,17 @@ public class Player : MonoBehaviour
         velocity.y = _yVelocity;
         _controller.Move(velocity * Time.deltaTime);
     }
+    public void scoreadd()
+    {
+        score ++;
+        _uimanager.getScore(score);
+       
+
+
+    }
+
+}
+
+internal class UImanager
+{
 }
