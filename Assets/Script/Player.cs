@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float gravityValue = 1f;
     private bool _isground;
-    private float _jumpHeight = 50f;
+    private float _jumpHeight = 40f;
     private float _yVelocity;
     private bool isjump=false;
     private UIManager _uimanager;
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             
                 if (Input.GetKeyDown(KeyCode.Space) && isjump)
                 {
-                    _yVelocity += _jumpHeight+15f;
+                    _yVelocity += _jumpHeight+10f;
                     isjump = false;
 
                 }
