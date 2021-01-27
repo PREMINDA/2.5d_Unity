@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -16,14 +17,15 @@ public class Player : MonoBehaviour
     private bool isjump=false;
     private UIManager _uimanager;
     private int score=0;
+    private int lives=3;
+
+
 
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
         _uimanager = GameObject.Find("Canvas").GetComponent<UIManager>();
-    
-
 
     }
 
@@ -73,9 +75,15 @@ public class Player : MonoBehaviour
 
 
     }
+    public void Damage()
+    {
+        lives--;
+        _uimanager.updateLivers(lives);
+        if(lives < 1)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
 }
 
-internal class UImanager
-{
-}
